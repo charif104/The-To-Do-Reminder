@@ -26,13 +26,13 @@ namespace Assigment4
 
             cmbBoxPriority.Items.Clear();
 
-            //cmbBoxPriority.SelectedIndex = (int)PriorityTypes.Normal;
+           
             cmbBoxPriority.Items.AddRange(Enum.GetNames(typeof(PriorityTypes)));
-
+           cmbBoxPriority.SelectedIndex = (int)PriorityTypes.Normal;
 
             lstbox.Items.Clear();
             lblClock.Text = String.Empty;
-            //    clockTimer.Start();
+            timer1.Start();
 
             txtToDo.Text = String.Empty;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
@@ -41,5 +41,16 @@ namespace Assigment4
             
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ReadInput();
+            lstbox.Items.Add(currTask.ToString());
+
+        }
+
+        private void ReadInput()
+        {
+            currTask.Priority = (PriorityTypes)cmbBoxPriority.SelectedIndex;
+        }
     }
 }

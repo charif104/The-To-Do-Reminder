@@ -12,17 +12,11 @@ namespace Assigment4
         private String description;
         private PriorityTypes priority;
 
-        public Task(DateTime date, string description, PriorityTypes priority)
-        {
-            this.date = date;
-            this.description = description;
-            this.priority = priority;
-            DefaultValues();
-        }
        public Task(DateTime taskDate)
         {
-            this.date = taskDate;
             DefaultValues();
+            this.date = taskDate;
+          
         }
 
         public Task()
@@ -77,5 +71,31 @@ namespace Assigment4
                 priority = value;
             }
         }
+
+       public string MinueAndSecondString
+        {
+            get
+            {
+                return date.Minute.ToString("00") + date.Second.ToString("00");
+            }
+        }
+
+        public override string ToString()
+        {
+            string textOut = String.Format("{0, -20} {1,10} {2, -16  {3, -20", 
+                date.ToLongDateString(),GetTimeString(), GetPriorityString(), Description );
+            return textOut;
+        }
+
+        private string GetPriorityString()
+        {
+            return priority.ToString().Replace('_', ' ');
+        }
+
+        private string GetTimeString()
+        {
+            return date.Hour.ToString()+ date.Minute.ToString();
+        }
     }
+   
 }
