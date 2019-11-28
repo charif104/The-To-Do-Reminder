@@ -1,4 +1,22 @@
-﻿namespace Assigment4
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+namespace Assigment4
 {
     partial class MainForm
     {
@@ -45,14 +63,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newCtrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openDatafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveDatafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFileNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cmbBoxPriority = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -99,6 +118,7 @@
             this.txtToDo.Name = "txtToDo";
             this.txtToDo.Size = new System.Drawing.Size(407, 20);
             this.txtToDo.TabIndex = 6;
+            this.txtToDo.TextChanged += new System.EventHandler(this.txtToDo_TextChanged);
             // 
             // btnAdd
             // 
@@ -118,6 +138,7 @@
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -127,6 +148,8 @@
             this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.btnDelete_ControlAdded);
             // 
             // groupBox1
             // 
@@ -162,7 +185,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(308, 31);
+            this.label7.Location = new System.Drawing.Point(364, 31);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 3;
@@ -171,7 +194,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(148, 31);
+            this.label6.Location = new System.Drawing.Point(186, 31);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 2;
@@ -180,7 +203,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(78, 31);
+            this.label5.Location = new System.Drawing.Point(138, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 1;
@@ -198,36 +221,37 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newCtrlToolStripMenuItem,
-            this.openDatafileToolStripMenuItem,
-            this.saveDatafileToolStripMenuItem,
+            this.menuFileNew,
+            this.menuFileOpen,
+            this.menuFileSave,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // newCtrlToolStripMenuItem
+            // menuFileNew
             // 
-            this.newCtrlToolStripMenuItem.Name = "newCtrlToolStripMenuItem";
-            this.newCtrlToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.newCtrlToolStripMenuItem.Text = "New   Ctr +N";
+            this.menuFileNew.Name = "menuFileNew";
+            this.menuFileNew.Size = new System.Drawing.Size(152, 22);
+            this.menuFileNew.Text = "New   Ctr +N";
+            this.menuFileNew.Click += new System.EventHandler(this.menuFileNew_Click);
             // 
-            // openDatafileToolStripMenuItem
+            // menuFileOpen
             // 
-            this.openDatafileToolStripMenuItem.Name = "openDatafileToolStripMenuItem";
-            this.openDatafileToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.openDatafileToolStripMenuItem.Text = "Open datafile";
+            this.menuFileOpen.Name = "menuFileOpen";
+            this.menuFileOpen.Size = new System.Drawing.Size(152, 22);
+            this.menuFileOpen.Text = "Open datafile";
             // 
-            // saveDatafileToolStripMenuItem
+            // menuFileSave
             // 
-            this.saveDatafileToolStripMenuItem.Name = "saveDatafileToolStripMenuItem";
-            this.saveDatafileToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.saveDatafileToolStripMenuItem.Text = "Save datafile";
+            this.menuFileSave.Name = "menuFileSave";
+            this.menuFileSave.Size = new System.Drawing.Size(152, 22);
+            this.menuFileSave.Text = "Save datafile";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit    Alt + F4";
             // 
             // helpToolStripMenuItem
@@ -235,6 +259,7 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -255,6 +280,10 @@
             this.cmbBoxPriority.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxPriority.TabIndex = 11;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +303,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "To Do Reminder";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -302,12 +332,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveDatafileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openDatafileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newCtrlToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuFileSave;
+        private System.Windows.Forms.ToolStripMenuItem menuFileOpen;
+        private System.Windows.Forms.ToolStripMenuItem menuFileNew;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ComboBox cmbBoxPriority;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

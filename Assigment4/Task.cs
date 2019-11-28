@@ -6,33 +6,13 @@ using System.Threading.Tasks;
 
 namespace Assigment4
 {
- public  class Task
+    public class Task
     {
         private DateTime date;
-        private String description;
+        private string description;
         private PriorityTypes priority;
 
-       public Task(DateTime taskDate)
-        {
-            DefaultValues();
-            this.date = taskDate;
-          
-        }
-
-        public Task()
-        {
-            DefaultValues();
-        }
-
-        private void DefaultValues()
-        {
-            date = DateTime.Now;
-            description = "string.empty";
-            priority = PriorityTypes.Normal;
-
-        }
-
-        public DateTime Date
+     public DateTime Date
         {
             get
             {
@@ -45,7 +25,7 @@ namespace Assigment4
             }
         }
 
-        public string Description
+     public string Description
         {
             get
             {
@@ -54,12 +34,20 @@ namespace Assigment4
 
             set
             {
-                if(!string.IsNullOrEmpty(value))
-                description = value;
+                if (!string.IsNullOrEmpty(value))
+                    description = value;
             }
         }
 
-        public PriorityTypes Priority
+     public string MinueAndSecondString
+        {
+            get
+            {
+                return date.Minute.ToString("00") + date.Second.ToString("00");
+            }
+        }
+
+     public PriorityTypes Priority
         {
             get
             {
@@ -72,30 +60,56 @@ namespace Assigment4
             }
         }
 
-       public string MinueAndSecondString
+        public DateTime TaskDate
         {
             get
             {
-                return date.Minute.ToString("00") + date.Second.ToString("00");
+                return date;
+            }
+
+            set
+            {
+                date = value;
             }
         }
 
-        public override string ToString()
+      
+
+       private void DefaultValues()
         {
-            string textOut = String.Format("{0, -20} {1,10} {2, -16  {3, -20", 
-                date.ToLongDateString(),GetTimeString(), GetPriorityString(), Description );
-            return textOut;
+            date = DateTime.Now;
+            description = "string.empty";
+            priority = PriorityTypes.Normal;
+
         }
 
-        private string GetPriorityString()
+      private string GetPriorityString()
         {
             return priority.ToString().Replace('_', ' ');
         }
-
-        private string GetTimeString()
+      private string GetTimeString()
         {
-            return date.Hour.ToString()+ date.Minute.ToString();
+            return date.Hour.ToString() + date.Minute.ToString();
         }
+      public Task()
+        {
+            DefaultValues();
+        }
+      public Task(DateTime taskDate)
+        {
+            DefaultValues();
+            this.date = taskDate;
+
+        }
+
+     public override string ToString()
+        {
+            string textOut = String.Format("{0, -20} {1,-10} {2, -10}  {3, -20 }",
+                date.ToLongDateString(), GetTimeString(), GetPriorityString(), description);
+            // string textOut = String.Format("{0, -20} {1,10} {2, -16  {3, -20",
+            //    date.ToLongDateString(), GetTimeString(), GetPriorityString(), description);
+            return textOut;
+        }
+
     }
-   
 }
